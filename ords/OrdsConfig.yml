@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ords-setting
+  namespace: oracle
+data:
+  settings.xml: |-
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+    <properties>
+    <comment>Saved on Sun Aug 06 09:59:27 UTC 2023</comment>
+    <entry key="database.api.enabled">true</entry>
+    <entry key="db.invalidPoolTimeout">5s</entry>
+    <entry key="debug.printDebugToScreen">true</entry>
+    <entry key="security.httpsHeaderCheck">X-Forwarded-Proto: http</entry>
+    <entry key="security.httpsHeaderCheck">X-Forwarded-Proto: https</entry>
+    <entry key="security.externalSessionTrustedOrigins">null</entry>
+    </properties>

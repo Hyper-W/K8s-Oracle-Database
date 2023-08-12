@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: oracle-common
+  namespace: oracle
+data:
+  ORACLE_CHARACTERSET: "AL32UTF8"
+  TZ: Asia/Tokyo
+  NLS_LANG: Japanese_Japan.AL32UTF8

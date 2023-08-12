@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ords
+  namespace: oracle
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ords
+  template:
+    metadata:
+      labels:
+        app: ords
+    spec:
+      containers:
+        - name: ords
+          image: container-registry.oracle.com/database/ords:23.2.0
+          envFrom:
+            - configMapRef:
+                name: oracle-common
+          volumeMounts:
+            - mountPath: "/opt/oracle/variables"
+              name: ords
+            # - name: ords-setting
+            #   mountPath: "/etc/ords/config/global"
+      volumes:
+        - name: ords
+          secret:
+            secretName: ords
+            items:
+              - key: conn_string
+                path: conn_string.txt
+        # - name: ords-setting
+        #   configMap:
+        #     name: ords-setting
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ords
+  namespace: oracle
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8181
+      targetPort: 8181
+      protocol: TCP
+  selector:
+    app: ords
