@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Change Current Directory
+cd $(dirname $0)
+
 # Apply Oracle Database
 kubectl apply -f ./OracleDatabase/OracleNS.yml
 kubectl apply -f ./common/CommonConfig.yml
