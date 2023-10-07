@@ -17,7 +17,7 @@ spec:
         fsGroup: 54321
       containers:
         - name: oracle
-          image: container-registry.oracle.com/database/free:23.2.0.0
+          image: container-registry.oracle.com/database/free:23.3.0.0
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
